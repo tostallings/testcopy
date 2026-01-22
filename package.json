@@ -1,0 +1,17 @@
+{
+  "name": "traceytest",
+  "version": "1.0.0",
+  "description": "A comprehensive and robust markdown editor with live HTML preview and PDF export capabilities.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dompurify": "^3.3.1",
+    "html2pdf.js": "^0.14.0",
+    "marked": "^17.0.1"
+  }
+}

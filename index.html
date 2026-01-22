@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor & Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Marked.js for markdown parsing -->
+    <script src="libs/marked.min.js"></script>
+    <!-- html2pdf.js for PDF export -->
+    <script src="libs/html2pdf.bundle.min.js"></script>
+    <!-- DOMPurify for sanitizing HTML -->
+    <script src="libs/purify.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Markdown Editor & Viewer</h1>
+            <div class="toolbar">
+                <button onclick="newDocument()" title="New Document" class="btn">
+                    <span>📄</span> New
+                </button>
+                <button onclick="openFile()" title="Open File" class="btn">
+                    <span>📂</span> Open
+                </button>
+                <button onclick="saveFile()" title="Save File" class="btn">
+                    <span>💾</span> Save
+                </button>
+                <div class="separator"></div>
+                <button onclick="insertBold()" title="Bold" class="btn">
+                    <strong>B</strong>
+                </button>
+                <button onclick="insertItalic()" title="Italic" class="btn">
+                    <em>I</em>
+                </button>
+                <button onclick="insertHeading()" title="Heading" class="btn">
+                    <span>H1</span>
+                </button>
+                <button onclick="insertLink()" title="Link" class="btn">
+                    <span>🔗</span>
+                </button>
+                <button onclick="insertImage()" title="Image" class="btn">
+                    <span>🖼️</span>
+                </button>
+                <button onclick="insertCode()" title="Code Block" class="btn">
+                    <span>&lt;/&gt;</span>
+                </button>
+                <button onclick="insertList()" title="Unordered List" class="btn">
+                    <span>•</span> List
+                </button>
+                <button onclick="insertOrderedList()" title="Ordered List" class="btn">
+                    <span>1.</span> List
+                </button>
+                <button onclick="insertQuote()" title="Quote" class="btn">
+                    <span>❝</span>
+                </button>
+                <div class="separator"></div>
+                <button onclick="exportToPDF()" title="Export to PDF" class="btn btn-primary">
+                    <span>📥</span> Export PDF
+                </button>
+                <button onclick="exportToHTML()" title="Export to HTML" class="btn">
+                    <span>🌐</span> Export HTML
+                </button>
+            </div>
+        </header>
+        
+        <div class="editor-container">
+            <div class="editor-pane">
+                <div class="pane-header">
+                    <h2>Editor</h2>
+                    <div class="stats">
+                        <span id="charCount">0</span> characters | 
+                        <span id="wordCount">0</span> words | 
+                        <span id="lineCount">0</span> lines
+                    </div>
+                </div>
+                <textarea id="editor" placeholder="# Start writing your CommonMark here...
+
+## Features
+- Live HTML preview
+- Export to PDF
+- CommonMark compliant
+- Multiple formatting options
+
+Try some **bold text** or *italic text*!
+
+Add a [link](https://commonmark.org) or an image.
+
+> This is a blockquote
+
+```
+// Code block
+console.log('Hello, Markdown!');
+```"></textarea>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="preview-pane">
+                <div class="pane-header">
+                    <h2>Preview</h2>
+                    <label class="toggle">
+                        <input type="checkbox" id="syncScroll" checked>
+                        <span>Sync Scroll</span>
+                    </label>
+                </div>
+                <div id="preview" class="preview-content"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden file input for opening files -->
+    <input type="file" id="fileInput" accept=".md,.markdown,.txt" style="display:none">
+    
+    <script src="app.js"></script>
+</body>
+</html>
